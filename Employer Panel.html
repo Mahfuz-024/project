@@ -1,0 +1,32 @@
+
+<h2>Applications for:HR Department</h2>
+<table border="1">
+    <tr>
+        <th>Applicant</th>
+        <th>Resume</th>
+        <th>Cover Letter</th>
+        <th>Status</th>
+        <th>Actions</th>
+    </tr>
+    HR
+    <tr>
+        <td>app.applicant.username</td>
+        <td><a href="{{ app.resume.url }}">Download</a></td>
+        <td>app.cover_letter</td>
+        <td>
+            <span style="color:
+                {% if app.status == 'approved' %}green
+                {% elif app.status == 'rejected' %}red
+                {% else %}gray
+                {% endif %}
+            "> NA</span>
+        </td>
+        <td>
+            <form method="post" style="display:inline;">
+                <input type="hidden" name="application_id" value="{{ app.id }}">
+                <button name="action" value="approve">Approve</button>
+                <button name="action" value="reject">Reject</button>
+            </form>
+        </td>
+    </tr>
+</table>
