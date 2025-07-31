@@ -1,0 +1,5 @@
+{% extends 'portal/base.html' %}
+{% block content %}
+<h2>Your Applications</h2>
+<ul class="list-group">{% for app in applications %}<li class="list-group-item">Applied to <strong>{{ app.job.title }}</strong> at {{ app.job.company_name }} on {{ app.applied_at }}</li>{% endfor %}</ul>
+{% endblock %}

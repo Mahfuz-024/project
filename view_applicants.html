@@ -1,0 +1,6 @@
+{% extends 'portal/base.html' %}
+{% block content %}
+<h2>Applicants</h2>
+<ul class="list-group">{% for app in applications %}<li class="list-group-item">{{ app.applicant.username }} | {{ app.cover_letter }} <a href="{{ app.resume.url }}" class="btn btn-sm btn-outline-info" target="_blank">View Resume</a></li>{% endfor %}</ul>
+{% endblock %}
+

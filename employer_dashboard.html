@@ -1,0 +1,28 @@
+{% extends 'portal/base.html' %}
+
+{% block content %}
+<div class="card p-4 shadow-sm">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h3 class="mb-0">Your Posted Jobs</h3>
+        <a href="{% url 'post_job' %}" class="btn btn-primary">Post New Job</a>
+    </div>
+
+    {% if jobs %}
+        <ul class="list-group list-group-flush">
+            {% for job in jobs %}
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <div>
+                        <h5 class="mb-1">{{ job.title }}</h5>
+                        <small class="text-muted">{{ job.company_name }}</small>
+                    </div>
+                    <a href="{% url 'view_applicants' job.id %}" class="btn btn-outline-secondary btn-sm">View Applicants</a>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <div class="alert alert-info mt-3 text-center">
+            You haven't posted any jobs yet.
+        </div>
+    {% endif %}
+</div>
+{% endblock %}
